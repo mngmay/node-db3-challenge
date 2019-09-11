@@ -36,4 +36,15 @@ JOIN Products as p
 WHERE p.categoryID = c.categoryID
 GROUP BY c.CategoryName
 
+Manual Check of Categories:
+SELECT \*
+FROM Categories as c
+JOIN Products as p
+WHERE p.categoryID = c.categoryID AND CategoryName = "Produce"
+
 ### (Stretch) Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
+
+SELECT od.OrderId, COUNT(p.ProductID) AS ItemCount
+FROM OrderDetails as od
+LEFT JOIN Products AS p WHERE p.ProductID = od.ProductID
+GROUP BY od.OrderId
