@@ -40,7 +40,13 @@ function findSteps(id) {
     });
 }
 
-function add() {}
+function add(scheme) {
+  return db("schemes")
+    .insert(scheme)
+    .then(scheme => {
+      return scheme;
+    });
+}
 
 function update() {}
 
