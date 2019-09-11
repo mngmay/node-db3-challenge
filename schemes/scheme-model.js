@@ -43,11 +43,18 @@ function findSteps(id) {
 function add(scheme) {
   return db("schemes")
     .insert(scheme)
-    .then(scheme => {
-      return scheme;
+    .then(id => {
+      return findById(id[0]);
     });
 }
 
-function update() {}
+function update(changes, id) {
+  return db("schemes")
+    .where({ id: id })
+    .update(changes)
+    .then(changes => {
+      return changes;
+    });
+}
 
 function remove() {}
