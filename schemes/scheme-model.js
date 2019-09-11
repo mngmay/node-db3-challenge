@@ -57,4 +57,16 @@ function update(changes, id) {
     });
 }
 
-function remove() {}
+function remove(id) {
+  const removed = findById(id);
+  return db("schemes")
+    .where({ id: id })
+    .del()
+    .then(scheme => {
+      if (scheme) {
+        return removed;
+      } else {
+        return null;
+      }
+    });
+}
