@@ -30,7 +30,7 @@ LEFT JOIN Employees AS e ON e.EmployeeID = o.EmployeeID
 
 ### (Stretch) Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 9 records.
 
-SELECT c.CategoryName, COUNT(ProductID) AS Count
+SELECT c.CategoryName, COUNT(p.ProductID) AS Count
 FROM Categories as c
 JOIN Products as p
 WHERE p.categoryID = c.categoryID
@@ -44,7 +44,6 @@ WHERE p.categoryID = c.categoryID AND CategoryName = "Produce"
 
 ### (Stretch) Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records.
 
-SELECT od.OrderId, COUNT(p.ProductID) AS ItemCount
-FROM OrderDetails as od
-LEFT JOIN Products AS p WHERE p.ProductID = od.ProductID
-GROUP BY od.OrderId
+SELECT OrderId, SUM(Quantity) AS ItemCount
+FROM OrderDetails
+GROUP BY OrderId
