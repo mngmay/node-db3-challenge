@@ -53,7 +53,7 @@ function update(changes, id) {
     .where({ id: id })
     .update(changes)
     .then(changes => {
-      return changes;
+      return findById(id);
     });
 }
 
